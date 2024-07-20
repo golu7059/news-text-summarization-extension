@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           return;
       }
 
-      fetch('http://localhost:5007/summarize', { 
+      fetch('http://127.0.0.1:5007/summarize', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: articleText })
@@ -16,7 +16,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           sendResponse({ summary: data.summary });
       })
       .catch(error => {
-          console.error('Error:', error);
           sendResponse({ summary: 'Error summarizing article.' });
       });
 
